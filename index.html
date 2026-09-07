@@ -643,11 +643,435 @@ section{position:relative;overflow:hidden}
   .choice-pill{width:100%}
 }
 
+
+<style id="atelier-v5-fit-and-romance">
+/* Secciones ajustadas para que cada escena quepa mejor en una pantalla */
+.story,
+.manifesto,
+.couture,
+.love-letter,
+.interlude,
+.atelier-countdown,
+.experience,
+.rsvp,
+.final{
+  min-height:100svh!important;
+  height:auto!important;
+}
+
+.story-left,
+.story-right,
+.manifesto-photo,
+.manifesto-copy,
+.couture,
+.love-letter-inner,
+.atelier-count-inner,
+.experience-grid,
+.rsvp-wrap{
+  min-height:0!important;
+}
+
+.story-left,
+.manifesto-copy{
+  padding-top:6vh!important;
+  padding-bottom:6vh!important;
+}
+
+.story-right{
+  min-height:100svh!important;
+}
+
+.frame-stack{
+  width:min(72%,560px)!important;
+  max-height:78svh!important;
+}
+
+.manifesto-photo{
+  min-height:100svh!important;
+}
+
+.manifesto-copy{
+  justify-content:center!important;
+}
+
+.couture{
+  padding-top:6vh!important;
+  padding-bottom:6vh!important;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.couture-head{
+  margin-bottom:3vh!important;
+}
+.couture h2{
+  font-size:clamp(42px,5vw,72px)!important;
+  margin:10px 0 14px!important;
+}
+.couture-grid{
+  align-items:center!important;
+}
+.couture-photo{
+  min-height:54svh!important;
+  max-height:60svh!important;
+}
+.couture-note{
+  padding:24px!important;
+}
+
+.love-letter{
+  padding-top:6vh!important;
+  padding-bottom:6vh!important;
+  display:flex;
+  align-items:center;
+}
+.love-letter-inner{
+  min-height:86svh!important;
+}
+.love-letter-visual{
+  min-height:440px!important;
+}
+
+.interlude,
+.interlude video{
+  min-height:100svh!important;
+  height:100svh!important;
+}
+
+.atelier-countdown{
+  padding-top:6vh!important;
+  padding-bottom:6vh!important;
+}
+
+.experience{
+  padding-top:6vh!important;
+  padding-bottom:6vh!important;
+  display:flex;
+  align-items:center;
+}
+.experience-grid{
+  width:100%;
+}
+
+.rsvp{
+  padding-top:6vh!important;
+  padding-bottom:6vh!important;
+  display:flex;
+  align-items:center;
+}
+.rsvp-wrap{
+  width:100%;
+}
+
+/* ---------- ALBUM REAL ---------- */
+.frame-stack{
+  cursor:pointer;
+}
+.album-photo{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.frame.one{
+  transform:rotate(-6deg) translate(-18px,8px)!important;
+  overflow:hidden;
+}
+.frame.two{
+  transform:rotate(5deg) translate(18px,10px)!important;
+  overflow:hidden;
+}
+.frame.three{
+  transform:translate(-12px,-14px)!important;
+  overflow:hidden;
+  background:#171821!important;
+}
+.frame.three img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.88) contrast(1.03);
+  opacity:.82;
+}
+.album-hint{
+  position:absolute;
+  left:50%;
+  bottom:-46px;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  font-size:9px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#6C6770;
+}
+.album-modal{
+  position:fixed;
+  inset:0;
+  z-index:1400;
+  background:rgba(10,12,17,.92);
+  backdrop-filter:blur(12px);
+  display:none;
+  place-items:center;
+  padding:30px;
+}
+.album-modal.open{display:grid}
+.album-stage{
+  position:relative;
+  width:min(92vw,1100px);
+  height:min(84vh,760px);
+  display:grid;
+  place-items:center;
+}
+.album-stage img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  box-shadow:0 30px 90px rgba(0,0,0,.35);
+}
+.album-close,.album-prev,.album-next{
+  position:absolute;
+  border:1px solid rgba(255,255,255,.30);
+  background:rgba(17,19,24,.58);
+  color:white;
+  border-radius:999px;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+}
+.album-close{
+  top:18px;right:18px;
+  width:42px;height:42px;
+}
+.album-prev,.album-next{
+  top:50%;
+  transform:translateY(-50%);
+  width:46px;height:46px;
+}
+.album-prev{left:18px}
+.album-next{right:18px}
+.album-caption{
+  position:absolute;
+  bottom:16px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:9px;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+  color:#D7D2CA;
+}
+
+/* ---------- DIRECCIÓN VISUAL + DRESS CODE EN UNA SOLA ESCENA ---------- */
+.couture-grid{
+  grid-template-columns:1fr 1fr!important;
+}
+.couture-right{
+  display:grid;
+  grid-template-rows:auto auto;
+  gap:16px;
+}
+.dress-mini{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.dress-mini-card{
+  border:1px solid rgba(244,240,232,.18);
+  background:rgba(255,255,255,.03);
+  padding:18px;
+  min-height:180px;
+}
+.dress-mini-card h4{
+  font:400 24px Georgia,serif;
+  margin:10px 0 8px;
+}
+.dress-mini-card p{
+  color:#B9BBC3;
+  font-size:14px;
+  line-height:1.55;
+}
+.dress-mini-figure{
+  width:54px;
+  height:78px;
+  margin-bottom:8px;
+  position:relative;
+  opacity:.9;
+}
+.dress-mini-figure.male::before{
+  content:"";
+  position:absolute;
+  left:17px;top:2px;
+  width:20px;height:20px;border-radius:50%;
+  border:1px solid var(--champagne);
+}
+.dress-mini-figure.male::after{
+  content:"";
+  position:absolute;
+  left:10px;top:28px;
+  width:34px;height:48px;
+  border:1px solid rgba(244,240,232,.6);
+  clip-path:polygon(25% 0,75% 0,100% 100%,0 100%);
+}
+.dress-mini-figure.female::before{
+  content:"";
+  position:absolute;
+  left:17px;top:2px;
+  width:20px;height:20px;border-radius:50%;
+  border:1px solid var(--champagne);
+}
+.dress-mini-figure.female::after{
+  content:"";
+  position:absolute;
+  left:8px;top:27px;
+  width:38px;height:50px;
+  border:1px solid rgba(244,240,232,.6);
+  clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);
+}
+
+/* ---------- CORAZÓN CON LATIDO Y PARTÍCULAS ---------- */
+.love-heart{
+  animation:heartBeat 1.8s ease-in-out infinite;
+  filter:drop-shadow(0 0 16px rgba(199,165,106,.18));
+}
+@keyframes heartBeat{
+  0%,100%{transform:scale(1)}
+  18%{transform:scale(1.08)}
+  32%{transform:scale(.98)}
+  48%{transform:scale(1.05)}
+  62%{transform:scale(1)}
+}
+.heart-particles{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.heart-particle{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--champagne);
+  opacity:0;
+  animation:heartParticle 3.2s ease-out infinite;
+}
+@keyframes heartParticle{
+  0%{transform:translate(-50%,-50%) scale(.2);opacity:0}
+  12%{opacity:.65}
+  100%{transform:translate(var(--x),var(--y)) scale(1);opacity:0}
+}
+
+/* ---------- COUNTDOWN MÁS RICO ---------- */
+.atelier-count-inner{
+  position:relative;
+}
+.count-romance{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:34px;
+}
+.count-note{
+  padding:18px;
+  border:1px solid rgba(17,19,24,.12);
+  background:rgba(255,255,255,.42);
+}
+.count-note strong{
+  display:block;
+  font:400 22px Georgia,serif;
+  margin-bottom:6px;
+}
+.count-note span{
+  color:#716C73;
+  font-size:13px;
+  line-height:1.5;
+}
+.count-quote{
+  margin-top:30px;
+  font:italic 25px Georgia,serif;
+  color:#3D3940;
+}
+
+/* ---------- SECCIÓN VII REEMPLAZADA POR RECUERDOS ---------- */
+.experience-copy h2{
+  font-size:clamp(46px,5.4vw,76px)!important;
+}
+.memory-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.memory-card{
+  border:1px solid rgba(244,240,232,.18);
+  background:rgba(255,255,255,.035);
+  padding:22px;
+  min-height:190px;
+}
+.memory-card .year{
+  color:var(--champagne);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.memory-card h3{
+  font:400 27px Georgia,serif;
+  margin:10px 0 8px;
+}
+.memory-card p{
+  color:#C5BFC9;
+  line-height:1.55;
+  font-size:14px;
+}
+
+/* ---------- PARTÍCULAS GLOBALES AL HACER SCROLL ---------- */
+.scroll-particles{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:70;
+  overflow:hidden;
+}
+.scroll-particle{
+  position:absolute;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:rgba(199,165,106,.70);
+  box-shadow:0 0 10px rgba(199,165,106,.22);
+  animation:scrollParticle 1.8s ease-out forwards;
+}
+@keyframes scrollParticle{
+  from{transform:translateY(0) scale(.35);opacity:.55}
+  to{transform:translateY(-70px) scale(1);opacity:0}
+}
+
+@media(max-width:900px){
+  .couture-grid{grid-template-columns:1fr!important}
+  .couture-photo{min-height:42svh!important}
+  .dress-mini{grid-template-columns:1fr 1fr}
+  .count-romance{grid-template-columns:1fr}
+  .memory-grid{grid-template-columns:1fr}
+}
+</style>
+
 </style>
 </head>
 <body>
 
 <div class="atelier-badge">Demo Atelier · CELEA</div>
+<div class="scroll-particles" id="scrollParticles"></div>
+
+<div class="album-modal" id="albumModal">
+  <div class="album-stage">
+    <button class="album-close" id="albumClose">×</button>
+    <button class="album-prev" id="albumPrev">‹</button>
+    <img id="albumImage" src="FA1.jpg" alt="Álbum Javier y Sofia">
+    <button class="album-next" id="albumNext">›</button>
+    <div class="album-caption" id="albumCaption">RECUERDO 01 · JAVIER & SOFIA</div>
+  </div>
+</div>
 <div class="pointer-glow" id="pointerGlow"></div>
 <nav class="atelier-nav" aria-label="Navegación Atelier">
   <a href="#inicio" title="Inicio"></a>
@@ -729,16 +1153,21 @@ section{position:relative;overflow:hidden}
   </div>
 
   <div class="story-right">
-    <div class="frame-stack reveal">
-      <div class="frame one"></div>
-      <div class="frame two"></div>
+    <div class="frame-stack reveal" id="albumStack">
+      <div class="frame one">
+        <img src="FA1.jpg" class="album-photo" alt="Javier y Sofia, recuerdo 1">
+      </div>
+      <div class="frame two">
+        <img src="FA2.jpg" class="album-photo" alt="Javier y Sofia, recuerdo 2">
+      </div>
       <div class="frame three">
-        <div class="frame-mark">J·S</div>
+        <img src="FA1.jpg" alt="Javier y Sofia, recuerdo principal">
         <div class="frame-caption">
           <span>Quito · Ecuador</span>
           <span>2027</span>
         </div>
       </div>
+      <div class="album-hint">Haz clic para abrir nuestro álbum</div>
     </div>
   </div>
 </section>
@@ -747,8 +1176,8 @@ section{position:relative;overflow:hidden}
   <div class="manifesto-photo"></div>
 
   <div class="manifesto-copy">
-    <div class="kicker reveal">Retrato I · Presencia</div>
-    <h2 class="reveal">Diseñado alrededor de personas reales.</h2>
+    <div class="kicker reveal">Un recuerdo que se queda</div>
+    <h2 class="reveal">Hay momentos que solo ellos saben explicar.</h2>
     <p class="reveal">
       En Atelier las fotografías no se acomodan dentro de una plantilla.
       La composición nace de ellas. El encuadre, la luz y el color construyen
@@ -756,30 +1185,47 @@ section{position:relative;overflow:hidden}
     </p>
 
     <div class="manifesto-quote reveal">
-      “La invitación deja de ser una página y empieza a sentirse como una pieza.”
+      “Al final, siempre encontramos la forma de volver el uno al otro.”
     </div>
   </div>
 </section>
 
 <section class="couture" id="couture">
   <div class="couture-head">
-    <div class="kicker reveal">Dirección visual · Couture digital</div>
-    <h2 class="reveal">Una identidad creada solo para este evento.</h2>
+    <div class="kicker reveal">Nuestro ambiente · Dress code</div>
+    <h2 class="reveal">Así imaginamos la noche que celebraremos juntos.</h2>
   </div>
 
   <div class="couture-grid">
     <div class="couture-photo reveal"></div>
 
-    <div class="couture-note reveal">
-      <div class="kicker">Código visual</div>
-      <h3>Noche editorial</h3>
-      <p>
-        Carbón, ciruela, champagne y marfil. Tipografía clásica enfrentada
-        a estructuras contemporáneas, vidrio, profundidad y movimiento.
-      </p>
+    <div class="couture-right">
+      <div class="couture-note reveal">
+        <div class="kicker">La atmósfera de nuestro día</div>
+        <h3>Noche, luz y champagne</h3>
+        <p>
+          Elegimos una celebración íntima, cálida y nocturna. Queremos que cada
+          detalle se sienta elegante sin perder cercanía.
+        </p>
+        <div class="color-strip" aria-label="Paleta Atelier">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
 
-      <div class="color-strip" aria-label="Paleta Atelier">
-        <span></span><span></span><span></span><span></span><span></span>
+      <div class="dress-mini reveal">
+        <article class="dress-mini-card">
+          <div class="dress-mini-figure male"></div>
+          <div class="kicker">Caballeros</div>
+          <h4>Formal oscuro</h4>
+          <p>Traje negro, azul noche o gris carbón. Corbata opcional.</p>
+        </article>
+
+        <article class="dress-mini-card">
+          <div class="dress-mini-figure female"></div>
+          <div class="kicker">Damas</div>
+          <h4>Elegancia nocturna</h4>
+          <p>Vestido largo o midi. Tonos profundos, champagne y neutros.</p>
+        </article>
       </div>
     </div>
   </div>
@@ -803,6 +1249,7 @@ section{position:relative;overflow:hidden}
     <div class="love-letter-visual reveal">
       <div class="love-orbit one"></div>
       <div class="love-orbit two"></div>
+      <div class="heart-particles" id="heartParticles"></div>
       <div class="love-heart">♡</div>
       <div class="love-small">DESDE AQUÍ · PARA SIEMPRE</div>
     </div>
@@ -848,8 +1295,8 @@ section{position:relative;overflow:hidden}
   </video>
 
   <div class="interlude-copy reveal">
-    <div class="kicker">Film II · Después del sí</div>
-    <h2>La noche cambia de ritmo.</h2>
+    <div class="kicker">Después del sí</div>
+    <h2>Y entonces empieza la celebración.</h2>
     <p>
       El segundo acto puede cambiar de lenguaje completamente:
       más oscuro, más íntimo, más vivo.
@@ -868,26 +1315,62 @@ section{position:relative;overflow:hidden}
       <div class="atelier-count"><b id="aMinutes">00</b><span>Minutos</span></div>
       <div class="atelier-count"><b id="aSeconds">00</b><span>Segundos</span></div>
     </div>
+
+    <div class="count-romance reveal">
+      <div class="count-note">
+        <strong>12 septiembre</strong>
+        <span>La fecha que ya no queremos seguir esperando.</span>
+      </div>
+      <div class="count-note">
+        <strong>17:00</strong>
+        <span>El momento en que empieza nuestro “para siempre”.</span>
+      </div>
+      <div class="count-note">
+        <strong>Quito</strong>
+        <span>La ciudad que verá comenzar este nuevo capítulo.</span>
+      </div>
+    </div>
+
+    <div class="count-quote reveal">“Cada día que falta es uno menos para encontrarnos ahí.”</div>
   </div>
 </section>
 
 <section class="experience">
   <div class="experience-grid">
     <div class="experience-copy">
-      <div class="kicker reveal">Capítulo III · Hecho para ustedes</div>
-      <h2 class="reveal">Hay detalles que solo tienen sentido para ellos.</h2>
+      <div class="kicker reveal">Pequeños capítulos de nosotros</div>
+      <h2 class="reveal">Antes de la boda, ya había una historia.</h2>
       <p class="reveal">
-        Una canción que los acompaña desde el inicio, una carta escrita a mano,
-        una frase que solo ellos entienden, fotografías que cuentan etapas,
-        pequeños guiños familiares y recuerdos convertidos en movimiento.
+        No queremos resumir una relación en una fecha. Antes del vestido,
+        los invitados y la ceremonia hubo días comunes que terminaron siendo
+        nuestros recuerdos favoritos.
       </p>
     </div>
 
-    <div class="interactive-panel">
-      <article class="tile reveal"><div class="icon">♪</div><h3>Nuestra canción</h3><p>La canción que acompaña su historia puede convertirse en parte de la invitación.</p></article>
-      <article class="tile reveal"><div class="icon">✦</div><h3>Promesas</h3><p>Un espacio íntimo para guardar palabras, votos o una carta entre los dos.</p></article>
-      <article class="tile reveal"><div class="icon">↗</div><h3>Nuestros momentos</h3><p>Pequeños capítulos de la relación: viajes, fechas, lugares y recuerdos importantes.</p></article>
-      <article class="tile reveal"><div class="icon">∞</div><h3>Lo que viene</h3><p>Una mirada al futuro que están construyendo juntos, desde este día en adelante.</p></article>
+    <div class="memory-grid">
+      <article class="memory-card reveal">
+        <div class="year">2024</div>
+        <h3>La primera escapada</h3>
+        <p>Un fin de semana sin demasiados planes que terminó convirtiéndose en uno de nuestros recuerdos favoritos.</p>
+      </article>
+
+      <article class="memory-card reveal">
+        <div class="year">Nuestra canción</div>
+        <h3>La que siempre vuelve</h3>
+        <p>Hay canciones que dejan de pertenecer al artista y empiezan a pertenecer a dos personas.</p>
+      </article>
+
+      <article class="memory-card reveal">
+        <div class="year">En casa</div>
+        <h3>Los días normales</h3>
+        <p>Café, películas, silencios cómodos y la vida cotidiana que terminó sintiéndose extraordinaria.</p>
+      </article>
+
+      <article class="memory-card reveal">
+        <div class="year">Lo que viene</div>
+        <h3>Nuestro siguiente capítulo</h3>
+        <p>Una casa llena de historias, viajes pendientes y muchos motivos más para seguir celebrando.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -1089,6 +1572,83 @@ document.querySelectorAll(".number-pill").forEach(btn=>{
     this.classList.add("active");
   });
 });
+</script>
+
+
+<script id="atelier-v5-interactions">
+/* Álbum */
+const albumItems = [
+  {src:"FA1.jpg",caption:"RECUERDO 01 · JAVIER & SOFIA"},
+  {src:"FA2.jpg",caption:"RECUERDO 02 · JAVIER & SOFIA"}
+];
+let albumIndex = 0;
+
+const albumModal = document.getElementById("albumModal");
+const albumImage = document.getElementById("albumImage");
+const albumCaption = document.getElementById("albumCaption");
+
+function showAlbum(i){
+  albumIndex = (i + albumItems.length) % albumItems.length;
+  albumImage.src = albumItems[albumIndex].src;
+  albumCaption.textContent = albumItems[albumIndex].caption;
+}
+document.getElementById("albumStack")?.addEventListener("click",()=>{
+  showAlbum(0);
+  albumModal.classList.add("open");
+  document.body.style.overflow="hidden";
+});
+document.getElementById("albumClose")?.addEventListener("click",()=>{
+  albumModal.classList.remove("open");
+  document.body.style.overflow="auto";
+});
+document.getElementById("albumPrev")?.addEventListener("click",()=>showAlbum(albumIndex-1));
+document.getElementById("albumNext")?.addEventListener("click",()=>showAlbum(albumIndex+1));
+albumModal?.addEventListener("click",e=>{
+  if(e.target===albumModal){
+    albumModal.classList.remove("open");
+    document.body.style.overflow="auto";
+  }
+});
+
+/* Partículas del corazón */
+const heartBox = document.getElementById("heartParticles");
+if(heartBox){
+  const particleData = [
+    ["-90px","-120px",".0s"],["80px","-105px",".4s"],["-120px","-30px",".8s"],
+    ["110px","20px","1.2s"],["-65px","95px","1.6s"],["70px","100px","2.0s"],
+    ["0px","-145px","2.4s"],["130px","-65px","2.8s"]
+  ];
+  particleData.forEach(([x,y,d])=>{
+    const p=document.createElement("span");
+    p.className="heart-particle";
+    p.style.setProperty("--x",x);
+    p.style.setProperty("--y",y);
+    p.style.animationDelay=d;
+    heartBox.appendChild(p);
+  });
+}
+
+/* Partículas sutiles mientras se hace scroll */
+const scrollParticles = document.getElementById("scrollParticles");
+let lastParticleY = window.scrollY;
+
+window.addEventListener("scroll",()=>{
+  const delta = Math.abs(window.scrollY-lastParticleY);
+  if(delta < 34 || !scrollParticles) return;
+  lastParticleY = window.scrollY;
+
+  const amount = Math.min(3,Math.max(1,Math.floor(delta/90)));
+  for(let i=0;i<amount;i++){
+    const p=document.createElement("span");
+    p.className="scroll-particle";
+    p.style.left=(8+Math.random()*84)+"vw";
+    p.style.top=(20+Math.random()*70)+"vh";
+    p.style.opacity=(.25+Math.random()*.35);
+    p.style.transform=`scale(${.5+Math.random()*.8})`;
+    scrollParticles.appendChild(p);
+    setTimeout(()=>p.remove(),1900);
+  }
+},{passive:true});
 </script>
 
 </body>
