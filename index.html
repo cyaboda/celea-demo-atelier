@@ -34,7 +34,10 @@ section{position:relative;overflow:hidden}
 #gate.open .curtain.right{transform:translateX(103%)}
 .gate-center{position:relative;z-index:4;display:flex;flex-direction:column;align-items:center;text-align:center;transition:opacity .55s ease,transform .55s ease}
 #gate.open .gate-center{opacity:0;transform:scale(.94)}
-.monogram{width:92px;height:92px;border-radius:50%;border:1px solid rgba(199,165,106,.65);display:grid;place-items:center;font:400 27px Georgia,serif;color:var(--champagne);margin-bottom:28px}
+#gate.finished{opacity:0;visibility:hidden;pointer-events:none}
+#gate{transition:opacity .55s ease .15s,visibility 0s linear .75s}
+.monogram{width:118px;height:118px;border-radius:50%;border:1px solid rgba(199,165,106,.65);display:grid;place-items:center;margin-bottom:28px;padding:13px;background:rgba(255,255,255,.025);box-shadow:0 18px 55px rgba(0,0,0,.22)}
+.monogram img{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 5px 14px rgba(0,0,0,.22))}
 .gate-title{font:400 clamp(42px,7vw,74px)/.95 Georgia,serif;margin:0 0 12px}
 .gate-sub{color:#B9BBC4;font-size:11px;letter-spacing:.25em;text-transform:uppercase;margin-bottom:34px}
 .open-btn{border:1px solid rgba(199,165,106,.72);color:var(--ivory);background:transparent;padding:15px 28px;border-radius:999px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:.35s ease}
@@ -438,7 +441,7 @@ section{position:relative;overflow:hidden}
   <div class="curtain left"></div>
   <div class="curtain right"></div>
   <div class="gate-center">
-    <div class="monogram">J · S</div>
+    <div class="monogram"><img src="ESCUDO FAMILIAR.png" alt="Escudo familiar de Javier y Sofia"></div>
     <div class="kicker">Atelier · experiencia personalizada</div>
     <div class="gate-title">Javier & Sofia</div>
     <div class="gate-sub">12 · 09 · 2027 · Quito</div>
@@ -706,11 +709,20 @@ document.body.style.overflow = "hidden";
 
 document.getElementById("openAtelier").addEventListener("click",function(){
   const gate = document.getElementById("gate");
+
   gate.classList.add("open");
+  document.body.style.overflow="auto";
+
+  /* Primero se abren las dos cortinas. Luego retiramos por completo
+     la portada para revelar la invitación que está debajo. */
   setTimeout(function(){
-    gate.style.pointerEvents="none";
-    document.body.style.overflow="auto";
-  },900);
+    gate.classList.add("finished");
+    window.scrollTo({top:0,left:0,behavior:"auto"});
+  },1350);
+
+  setTimeout(function(){
+    gate.style.display="none";
+  },2100);
 });
 
 const observer = new IntersectionObserver(entries=>{
