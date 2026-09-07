@@ -422,6 +422,227 @@ section{position:relative;overflow:hidden}
   .atelier-nav{display:none}
 }
 
+
+/* ---------- ATELIER V4 · ROMANCE ---------- */
+.love-letter{
+  min-height:100svh;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(199,165,106,.10),transparent 26%),
+    linear-gradient(145deg,#15131A,#231C28);
+  color:var(--ivory);
+  padding:110px max(24px,7vw);
+}
+.love-letter-inner{
+  min-height:75svh;
+  max-width:1280px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:7vw;
+  align-items:center;
+}
+.love-letter-copy h2{
+  font:italic 400 clamp(50px,6vw,88px)/1.05 Georgia,serif;
+  margin:18px 0 28px;
+  color:#F5F0E7;
+}
+.love-letter-copy p{
+  color:#CFC8D1;
+  line-height:1.9;
+  max-width:620px;
+}
+.signature-line{
+  margin-top:38px;
+  font:italic 28px Georgia,serif;
+  color:var(--champagne);
+}
+.love-letter-visual{
+  min-height:560px;
+  position:relative;
+  display:grid;
+  place-items:center;
+}
+.love-orbit{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(199,165,106,.30);
+}
+.love-orbit.one{width:430px;height:430px}
+.love-orbit.two{
+  width:290px;height:290px;
+  border-color:rgba(244,240,232,.16);
+}
+.love-heart{
+  font:400 86px Georgia,serif;
+  color:var(--champagne);
+}
+.love-small{
+  position:absolute;
+  bottom:58px;
+  font-size:9px;
+  letter-spacing:.26em;
+  color:#A9A3AD;
+}
+
+/* ---------- ELEGANT RSVP ---------- */
+.elegant-rsvp{
+  background:
+    radial-gradient(circle at 12% 18%,rgba(199,165,106,.10),transparent 26%),
+    linear-gradient(160deg,#F4F0E8,#EEE7DB);
+}
+.elegant-rsvp .rsvp-wrap{
+  align-items:center;
+}
+.rsvp-love-note{
+  margin-top:34px;
+  padding-top:28px;
+  border-top:1px solid rgba(17,19,24,.12);
+  font:italic 23px/1.55 Georgia,serif;
+  color:#4A454C;
+  max-width:520px;
+}
+.elegant-card{
+  padding:0!important;
+  overflow:hidden;
+  border:1px solid rgba(17,19,24,.10)!important;
+  background:rgba(255,253,249,.88)!important;
+  backdrop-filter:blur(12px);
+  box-shadow:0 26px 80px rgba(17,19,24,.10)!important;
+}
+.rsvp-topline{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  padding:30px 32px 26px;
+  border-bottom:1px solid rgba(17,19,24,.09);
+}
+.rsvp-topline strong{
+  display:block;
+  margin-top:7px;
+  font:400 29px Georgia,serif;
+}
+.mini-label{
+  display:block;
+  font-size:9px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:#7D7273;
+}
+.seat-badge{
+  padding:9px 13px;
+  border-radius:999px;
+  border:1px solid rgba(199,165,106,.55);
+  color:#806B45;
+  font-size:10px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.choice-block{
+  padding:24px 32px 0;
+}
+.choice-pills,.number-pills{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+.choice-pill,.number-pill{
+  border:1px solid rgba(17,19,24,.15);
+  background:transparent;
+  color:#55515A;
+  border-radius:999px;
+  padding:11px 16px;
+  cursor:pointer;
+  transition:.28s ease;
+}
+.choice-pill{
+  font-size:10px;
+  letter-spacing:.08em;
+}
+.number-pill{
+  min-width:46px;
+  padding:10px 14px;
+}
+.choice-pill.active,.number-pill.active{
+  background:var(--ink);
+  color:white;
+  border-color:var(--ink);
+  box-shadow:0 9px 24px rgba(17,19,24,.12);
+}
+.elegant-field{
+  padding:20px 32px 0;
+}
+.elegant-field label{
+  display:block;
+  margin-bottom:8px;
+  font-size:9px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:#7D7273;
+}
+.elegant-field input,.elegant-field textarea{
+  width:100%;
+  border:0;
+  border-bottom:1px solid rgba(17,19,24,.18);
+  background:transparent;
+  padding:12px 2px;
+  outline:none;
+  color:var(--ink);
+}
+.elegant-field textarea{
+  min-height:88px;
+  resize:vertical;
+}
+.option-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  padding:20px 32px 0;
+}
+.option-card{
+  border:1px solid rgba(17,19,24,.11);
+  padding:16px;
+  background:rgba(255,255,255,.42);
+}
+.option-card select{
+  width:100%;
+  margin-top:9px;
+  border:0;
+  background:transparent;
+  color:var(--ink);
+  outline:none;
+}
+.elegant-confirm{
+  display:block;
+  width:calc(100% - 64px);
+  margin:28px 32px 30px;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,#15171D,#3D3243)!important;
+  color:white!important;
+  padding:15px 22px!important;
+}
+.elegant-confirm:hover{
+  background:var(--champagne)!important;
+  color:#111318!important;
+}
+.elegant-card .success{
+  margin:0 32px 30px;
+  border-radius:10px;
+}
+
+@media(max-width:900px){
+  .love-letter-inner{grid-template-columns:1fr}
+  .love-letter-visual{min-height:420px}
+}
+@media(max-width:640px){
+  .option-grid{grid-template-columns:1fr}
+  .rsvp-topline{align-items:flex-start;flex-direction:column}
+  .choice-pill{width:100%}
+}
+
 </style>
 </head>
 <body>
@@ -499,11 +720,11 @@ section{position:relative;overflow:hidden}
 <section class="story" id="historia">
   <div class="story-left">
     <div class="kicker reveal">Capítulo I · Donde todo comenzó</div>
-    <h2 class="reveal">Dos mundos,<br>una misma dirección.</h2>
+    <h2 class="reveal">Dos historias,<br>un mismo hogar.</h2>
     <p class="reveal">
-      Atelier no parte de una plantilla. Cada sección nace de la historia,
-      el espacio, la música y la personalidad de la pareja. Esta demo imagina
-      una boda nocturna, íntima y editorial.
+      Hubo un primer encuentro, una conversación que se alargó más de la cuenta
+      y una historia que encontró su propio ritmo. Hoy Javier y Sofia celebran
+      todo lo que los trajo hasta aquí, y todo lo que todavía les queda por vivir.
     </p>
   </div>
 
@@ -564,10 +785,34 @@ section{position:relative;overflow:hidden}
   </div>
 </section>
 
+
+<section class="love-letter">
+  <div class="love-letter-inner">
+    <div class="love-letter-copy reveal">
+      <div class="kicker">Una pausa para ellos</div>
+      <h2>“Contigo, la vida se siente más nuestra.”</h2>
+      <p>
+        No se trata solo del día de la boda. Se trata de los cafés sin prisa,
+        los planes improvisados, las conversaciones de madrugada, las discusiones
+        que terminan en abrazo y la certeza tranquila de haber encontrado hogar
+        en otra persona.
+      </p>
+      <div class="signature-line">Javier & Sofia</div>
+    </div>
+
+    <div class="love-letter-visual reveal">
+      <div class="love-orbit one"></div>
+      <div class="love-orbit two"></div>
+      <div class="love-heart">♡</div>
+      <div class="love-small">DESDE AQUÍ · PARA SIEMPRE</div>
+    </div>
+  </div>
+</section>
+
 <section class="timeline" id="itinerario">
   <div class="timeline-head">
     <div class="kicker reveal">Capítulo II · El gran día</div>
-    <h2 class="reveal">Una experiencia en tres actos.</h2>
+    <h2 class="reveal">Un día contado en tres momentos.</h2>
   </div>
 
   <div class="timeline-grid">
@@ -630,77 +875,112 @@ section{position:relative;overflow:hidden}
   <div class="experience-grid">
     <div class="experience-copy">
       <div class="kicker reveal">Capítulo III · Hecho para ustedes</div>
-      <h2 class="reveal">No hay dos Atelier iguales.</h2>
+      <h2 class="reveal">Hay detalles que solo tienen sentido para ellos.</h2>
       <p class="reveal">
-        El diseño puede incorporar recursos únicos: cartas, audio,
-        storytelling, animaciones, galerías experimentales, menú,
-        códigos privados, itinerarios y módulos creados específicamente
-        para el evento.
+        Una canción que los acompaña desde el inicio, una carta escrita a mano,
+        una frase que solo ellos entienden, fotografías que cuentan etapas,
+        pequeños guiños familiares y recuerdos convertidos en movimiento.
       </p>
     </div>
 
     <div class="interactive-panel">
-      <article class="tile reveal"><div class="icon">♪</div><h3>Banda sonora</h3><p>Una experiencia que puede abrirse con música elegida para la pareja.</p></article>
-      <article class="tile reveal"><div class="icon">✦</div><h3>Dirección creativa</h3><p>Tipografía, ritmo, movimiento y lenguaje visual únicos.</p></article>
-      <article class="tile reveal"><div class="icon">↗</div><h3>Itinerario vivo</h3><p>Secciones que cambian según el momento o tipo de invitado.</p></article>
-      <article class="tile reveal"><div class="icon">∞</div><h3>Funciones a medida</h3><p>Todo lo que el evento necesite, diseñado alrededor de su historia.</p></article>
+      <article class="tile reveal"><div class="icon">♪</div><h3>Nuestra canción</h3><p>La canción que acompaña su historia puede convertirse en parte de la invitación.</p></article>
+      <article class="tile reveal"><div class="icon">✦</div><h3>Promesas</h3><p>Un espacio íntimo para guardar palabras, votos o una carta entre los dos.</p></article>
+      <article class="tile reveal"><div class="icon">↗</div><h3>Nuestros momentos</h3><p>Pequeños capítulos de la relación: viajes, fechas, lugares y recuerdos importantes.</p></article>
+      <article class="tile reveal"><div class="icon">∞</div><h3>Lo que viene</h3><p>Una mirada al futuro que están construyendo juntos, desde este día en adelante.</p></article>
     </div>
   </div>
 </section>
 
-<section class="rsvp" id="rsvp">
+
+<section class="rsvp elegant-rsvp" id="rsvp">
   <div class="rsvp-wrap">
     <div class="rsvp-copy">
-      <div class="kicker reveal">Capítulo IV · Tu lugar en esta historia</div>
-      <h2 class="reveal">Confirma tu asistencia.</h2>
+      <div class="kicker reveal">Tu lugar en esta historia</div>
+      <h2 class="reveal">Reserva este momento con nosotros.</h2>
       <p class="reveal">
-        En Atelier, el RSVP puede adaptarse al evento: menú, transporte,
-        hospedaje, alergias, acompañantes, horarios o cualquier dato que
-        los anfitriones necesiten.
+        Hemos guardado <strong>2 lugares</strong> para Invitado Atelier.
+        Confirma quiénes nos acompañarán y algunos pequeños detalles
+        para recibirlos como merecen.
       </p>
+
+      <div class="rsvp-love-note reveal">
+        “Lo único que falta para completar este día es compartirlo contigo.”
+      </div>
     </div>
 
-    <div class="rsvp-card reveal">
-      <div class="row">
-        <div class="field"><label>Invitado principal</label><input value="Invitado Atelier" readonly></div>
-        <div class="field"><label>Cupos</label><input value="2" readonly></div>
+    <div class="rsvp-card elegant-card reveal">
+      <div class="rsvp-topline">
+        <div>
+          <span class="mini-label">INVITACIÓN PARA</span>
+          <strong>Invitado Atelier</strong>
+        </div>
+        <div class="seat-badge">2 lugares</div>
       </div>
 
-      <div class="row">
-        <div class="field">
-          <label>¿Asistirás?</label>
-          <select><option>Sí, asistiré</option><option>No podré asistir</option></select>
-        </div>
-        <div class="field"><label>Segundo invitado</label><input placeholder="Nombre del acompañante"></div>
-      </div>
-
-      <div class="row">
-        <div class="field">
-          <label>Preferencia de menú</label>
-          <select><option>Menú clásico</option><option>Vegetariano</option><option>Vegano</option></select>
-        </div>
-        <div class="field">
-          <label>Transporte</label>
-          <select><option>No necesito</option><option>Sí, reservar transporte</option></select>
+      <div class="choice-block">
+        <span class="mini-label">¿NOS ACOMPAÑARÁS?</span>
+        <div class="choice-pills">
+          <button type="button" class="choice-pill active" data-attendance="yes">Sí, con mucho gusto</button>
+          <button type="button" class="choice-pill" data-attendance="no">No podremos acompañarlos</button>
         </div>
       </div>
 
-      <div class="field"><label>Mensaje para los novios</label><textarea placeholder="Escribe algo especial…"></textarea></div>
+      <div id="attendingDetails">
+        <div class="choice-block">
+          <span class="mini-label">¿CUÁNTOS ASISTIRÁN?</span>
+          <div class="number-pills">
+            <button type="button" class="number-pill" data-count="1">1</button>
+            <button type="button" class="number-pill active" data-count="2">2</button>
+          </div>
+        </div>
 
-      <button class="confirm" id="confirmAtelier">Confirmar asistencia</button>
+        <div class="elegant-field">
+          <label>Nombre del acompañante</label>
+          <input placeholder="Escribe su nombre">
+        </div>
+
+        <div class="option-grid">
+          <div class="option-card">
+            <span class="mini-label">MENÚ</span>
+            <select>
+              <option>Clásico</option>
+              <option>Vegetariano</option>
+              <option>Vegano</option>
+            </select>
+          </div>
+
+          <div class="option-card">
+            <span class="mini-label">TRANSPORTE</span>
+            <select>
+              <option>No necesito</option>
+              <option>Sí, reservar transporte</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="elegant-field">
+          <label>Una nota para Javier & Sofia</label>
+          <textarea placeholder="Un deseo, una frase o unas palabras para ellos…"></textarea>
+        </div>
+      </div>
+
+      <button class="confirm elegant-confirm" id="confirmAtelier">Confirmar mi asistencia</button>
+
       <div class="success hidden" id="atelierSuccess">
-        Demo registrada. En un proyecto Atelier real, CELEA guardaría todos estos datos en la base privada del evento.
+        Tu respuesta quedó registrada en esta demo. Gracias por formar parte de esta historia.
       </div>
     </div>
   </div>
 </section>
+
 
 <section class="final">
   <div class="reveal">
-    <div class="kicker">Fin del primer capítulo</div>
+    <div class="kicker">El comienzo de todo lo que sigue</div>
     <h2>Javier <span>&</span><br>Sofia</h2>
-    <p>Lo extraordinario empieza cuando deja de parecerse a todo lo demás.</p>
-    <div class="credit">Una experiencia Atelier por CELEA Studio</div>
+    <p>Que este día sea solo el primero de todos los que todavía quieren celebrar juntos.</p>
+    <div class="credit">Javier & Sofia · 12 de septiembre de 2027 · CELEA Atelier</div>
   </div>
 </section>
 
@@ -786,6 +1066,29 @@ window.addEventListener("pointermove",function(e){
   glow.style.left=e.clientX+"px";
   glow.style.top=e.clientY+"px";
 },{passive:true});
+</script>
+
+
+<script id="atelier-romance-rsvp">
+document.querySelectorAll(".choice-pill").forEach(btn=>{
+  btn.addEventListener("click",function(){
+    document.querySelectorAll(".choice-pill").forEach(b=>b.classList.remove("active"));
+    this.classList.add("active");
+
+    const attending = this.dataset.attendance === "yes";
+    document.getElementById("attendingDetails").style.display = attending ? "block" : "none";
+
+    const confirm = document.getElementById("confirmAtelier");
+    confirm.textContent = attending ? "Confirmar mi asistencia" : "Enviar mi respuesta";
+  });
+});
+
+document.querySelectorAll(".number-pill").forEach(btn=>{
+  btn.addEventListener("click",function(){
+    document.querySelectorAll(".number-pill").forEach(b=>b.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
 </script>
 
 </body>
