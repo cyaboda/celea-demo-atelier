@@ -127,11 +127,312 @@ section{position:relative;overflow:hidden}
   .interactive-panel{grid-template-columns:1fr}
   .row{grid-template-columns:1fr}
 }
+
+/* ---------- ATELIER V2 · MEDIA EXPERIENCE ---------- */
+.media-hero{
+  min-height:100svh;
+  position:relative;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:#090B10;
+}
+.media-hero video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.media-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(7,9,14,.30),rgba(7,9,14,.74)),
+    linear-gradient(90deg,rgba(7,9,14,.34),transparent 45%,rgba(7,9,14,.20));
+}
+.media-copy{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  max-width:900px;
+  padding:40px 24px;
+}
+.media-copy h2{
+  font:400 clamp(58px,8vw,120px)/.86 Georgia,serif;
+  margin:18px 0 26px;
+}
+.media-copy p{
+  font:italic 22px/1.6 Georgia,serif;
+  color:#E7E1D7;
+  max-width:700px;
+  margin:0 auto;
+}
+.media-index{
+  position:absolute;
+  right:4vw;
+  bottom:4vh;
+  z-index:2;
+  font:400 clamp(100px,15vw,240px)/.8 Georgia,serif;
+  color:rgba(255,255,255,.045);
+}
+.sound-toggle{
+  position:absolute;
+  right:24px;
+  top:24px;
+  z-index:3;
+  border:1px solid rgba(255,255,255,.34);
+  background:rgba(10,12,16,.38);
+  color:white;
+  backdrop-filter:blur(10px);
+  border-radius:999px;
+  padding:10px 14px;
+  font-size:9px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+
+/* FOTO / MANIFIESTO */
+.manifesto{
+  min-height:100svh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  background:var(--ivory);
+  color:var(--ink);
+}
+.manifesto-photo{
+  min-height:100svh;
+  background:url("FA1.jpg") center/cover no-repeat;
+  position:relative;
+}
+.manifesto-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent 58%,rgba(244,240,232,.96));
+}
+.manifesto-copy{
+  padding:8vw;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+}
+.manifesto-copy h2{
+  font:400 clamp(50px,6.2vw,94px)/.92 Georgia,serif;
+  margin:18px 0 26px;
+}
+.manifesto-copy p{
+  color:#646169;
+  line-height:1.85;
+  max-width:620px;
+}
+.manifesto-quote{
+  margin-top:34px;
+  padding-top:28px;
+  border-top:1px solid rgba(17,19,24,.13);
+  font:italic 25px/1.55 Georgia,serif;
+  color:#403B42;
+}
+
+/* VENUE / COUTURE */
+.couture{
+  min-height:100svh;
+  background:
+    radial-gradient(circle at 86% 15%,rgba(199,165,106,.12),transparent 26%),
+    #111318;
+  padding:110px max(24px,7vw);
+}
+.couture-head{
+  max-width:850px;
+  margin-bottom:54px;
+}
+.couture h2{
+  font:400 clamp(50px,6vw,90px)/.9 Georgia,serif;
+  margin:15px 0 22px;
+}
+.couture-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:20px;
+}
+.couture-photo{
+  min-height:620px;
+  background:url("FA2.jpg") center/cover no-repeat;
+  position:relative;
+}
+.couture-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,rgba(11,13,18,.58),transparent 55%);
+}
+.couture-note{
+  align-self:end;
+  padding:34px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.025);
+}
+.couture-note h3{
+  font:400 38px Georgia,serif;
+  margin:14px 0;
+}
+.couture-note p{
+  color:#B9BBC3;
+  line-height:1.75;
+}
+.color-strip{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  margin-top:28px;
+  height:64px;
+}
+.color-strip span:nth-child(1){background:#111318}
+.color-strip span:nth-child(2){background:#403246}
+.color-strip span:nth-child(3){background:#B8B9C0}
+.color-strip span:nth-child(4){background:#C7A56A}
+.color-strip span:nth-child(5){background:#F4F0E8}
+
+/* VIDEO INTERLUDE */
+.interlude{
+  min-height:100svh;
+  position:relative;
+  background:#07090D;
+}
+.interlude video{
+  width:100%;
+  height:100svh;
+  object-fit:cover;
+  display:block;
+}
+.interlude::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(9,11,16,.14),rgba(9,11,16,.64));
+  pointer-events:none;
+}
+.interlude-copy{
+  position:absolute;
+  left:7vw;
+  bottom:8vh;
+  z-index:2;
+  max-width:740px;
+}
+.interlude-copy h2{
+  font:400 clamp(52px,7vw,100px)/.9 Georgia,serif;
+  margin:14px 0;
+}
+.interlude-copy p{
+  color:#D6D1CA;
+  font:italic 22px/1.55 Georgia,serif;
+}
+
+/* COUNTDOWN SCULPTURAL */
+.atelier-countdown{
+  min-height:100svh;
+  background:var(--ivory);
+  color:var(--ink);
+  display:grid;
+  place-items:center;
+  padding:90px 24px;
+}
+.atelier-count-inner{
+  width:min(1200px,100%);
+  text-align:center;
+}
+.atelier-count-inner h2{
+  font:400 clamp(50px,6vw,84px)/1 Georgia,serif;
+  margin:14px 0 48px;
+}
+.atelier-counter{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid rgba(17,19,24,.16);
+  border-bottom:1px solid rgba(17,19,24,.16);
+}
+.atelier-count{
+  padding:38px 14px;
+  border-right:1px solid rgba(17,19,24,.16);
+}
+.atelier-count:last-child{border-right:0}
+.atelier-count b{
+  display:block;
+  font:400 clamp(50px,6vw,88px)/1 Georgia,serif;
+}
+.atelier-count span{
+  display:block;
+  margin-top:12px;
+  font-size:9px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#757078;
+}
+
+/* FLOATING NAV */
+.atelier-nav{
+  position:fixed;
+  right:18px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:90;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.atelier-nav a{
+  width:9px;height:9px;
+  border-radius:50%;
+  border:1px solid rgba(199,165,106,.72);
+  background:rgba(17,19,24,.28);
+  transition:.3s ease;
+}
+.atelier-nav a:hover{
+  transform:scale(1.5);
+  background:var(--champagne);
+}
+
+/* CURSOR-LIKE GLOW */
+.pointer-glow{
+  position:fixed;
+  width:180px;height:180px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(199,165,106,.10),transparent 66%);
+  pointer-events:none;
+  z-index:5;
+  transform:translate(-50%,-50%);
+  transition:opacity .25s ease;
+}
+
+@media(max-width:900px){
+  .manifesto,.couture-grid{grid-template-columns:1fr}
+  .manifesto-photo{min-height:60svh}
+  .manifesto-photo::after{background:linear-gradient(180deg,transparent 62%,rgba(244,240,232,.96))}
+  .couture-photo{min-height:58svh}
+}
+@media(max-width:640px){
+  .atelier-counter{grid-template-columns:1fr 1fr}
+  .atelier-count:nth-child(2){border-right:0}
+  .atelier-count:nth-child(-n+2){border-bottom:1px solid rgba(17,19,24,.16)}
+  .atelier-nav{display:none}
+}
+
 </style>
 </head>
 <body>
 
 <div class="atelier-badge">Demo Atelier · CELEA</div>
+<div class="pointer-glow" id="pointerGlow"></div>
+<nav class="atelier-nav" aria-label="Navegación Atelier">
+  <a href="#inicio" title="Inicio"></a>
+  <a href="#film" title="Film"></a>
+  <a href="#historia" title="Historia"></a>
+  <a href="#couture" title="Diseño"></a>
+  <a href="#itinerario" title="Itinerario"></a>
+  <a href="#rsvp" title="RSVP"></a>
+</nav>
 
 <div id="gate">
   <div class="curtain left"></div>
@@ -145,7 +446,7 @@ section{position:relative;overflow:hidden}
   </div>
 </div>
 
-<section class="hero">
+<section class="hero" id="inicio">
   <span class="star s1"></span>
   <span class="star s2"></span>
   <span class="star s3"></span>
@@ -173,7 +474,26 @@ section{position:relative;overflow:hidden}
   </div>
 </section>
 
-<section class="story">
+<section class="media-hero" id="film">
+  <video id="videoHero" autoplay muted loop playsinline preload="metadata">
+    <source src="VIDEO1.mp4" type="video/mp4">
+  </video>
+
+  <button class="sound-toggle" id="soundToggle">Activar sonido</button>
+
+  <div class="media-copy reveal">
+    <div class="kicker">Film I · Un instante antes</div>
+    <h2>Todo empieza<br>con una sensación.</h2>
+    <p>
+      Atelier puede integrar video como parte real de la narrativa, no como
+      un adorno. Imagen, sonido y movimiento se convierten en una sola pieza.
+    </p>
+  </div>
+
+  <div class="media-index">02</div>
+</section>
+
+<section class="story" id="historia">
   <div class="story-left">
     <div class="kicker reveal">Capítulo I · Donde todo comenzó</div>
     <h2 class="reveal">Dos mundos,<br>una misma dirección.</h2>
@@ -199,7 +519,49 @@ section{position:relative;overflow:hidden}
   </div>
 </section>
 
-<section class="timeline">
+<section class="manifesto">
+  <div class="manifesto-photo"></div>
+
+  <div class="manifesto-copy">
+    <div class="kicker reveal">Retrato I · Presencia</div>
+    <h2 class="reveal">Diseñado alrededor de personas reales.</h2>
+    <p class="reveal">
+      En Atelier las fotografías no se acomodan dentro de una plantilla.
+      La composición nace de ellas. El encuadre, la luz y el color construyen
+      la página alrededor de la historia.
+    </p>
+
+    <div class="manifesto-quote reveal">
+      “La invitación deja de ser una página y empieza a sentirse como una pieza.”
+    </div>
+  </div>
+</section>
+
+<section class="couture" id="couture">
+  <div class="couture-head">
+    <div class="kicker reveal">Dirección visual · Couture digital</div>
+    <h2 class="reveal">Una identidad creada solo para este evento.</h2>
+  </div>
+
+  <div class="couture-grid">
+    <div class="couture-photo reveal"></div>
+
+    <div class="couture-note reveal">
+      <div class="kicker">Código visual</div>
+      <h3>Noche editorial</h3>
+      <p>
+        Carbón, ciruela, champagne y marfil. Tipografía clásica enfrentada
+        a estructuras contemporáneas, vidrio, profundidad y movimiento.
+      </p>
+
+      <div class="color-strip" aria-label="Paleta Atelier">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline" id="itinerario">
   <div class="timeline-head">
     <div class="kicker reveal">Capítulo II · El gran día</div>
     <h2 class="reveal">Una experiencia en tres actos.</h2>
@@ -232,6 +594,35 @@ section{position:relative;overflow:hidden}
   </div>
 </section>
 
+<section class="interlude">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="VIDEO2.mp4" type="video/mp4">
+  </video>
+
+  <div class="interlude-copy reveal">
+    <div class="kicker">Film II · Después del sí</div>
+    <h2>La noche cambia de ritmo.</h2>
+    <p>
+      El segundo acto puede cambiar de lenguaje completamente:
+      más oscuro, más íntimo, más vivo.
+    </p>
+  </div>
+</section>
+
+<section class="atelier-countdown">
+  <div class="atelier-count-inner">
+    <div class="kicker reveal">La fecha se acerca</div>
+    <h2 class="reveal">Hasta nuestro próximo capítulo.</h2>
+
+    <div class="atelier-counter reveal">
+      <div class="atelier-count"><b id="aDays">00</b><span>Días</span></div>
+      <div class="atelier-count"><b id="aHours">00</b><span>Horas</span></div>
+      <div class="atelier-count"><b id="aMinutes">00</b><span>Minutos</span></div>
+      <div class="atelier-count"><b id="aSeconds">00</b><span>Segundos</span></div>
+    </div>
+  </div>
+</section>
+
 <section class="experience">
   <div class="experience-grid">
     <div class="experience-copy">
@@ -254,7 +645,7 @@ section{position:relative;overflow:hidden}
   </div>
 </section>
 
-<section class="rsvp">
+<section class="rsvp" id="rsvp">
   <div class="rsvp-wrap">
     <div class="rsvp-copy">
       <div class="kicker reveal">Capítulo IV · Tu lugar en esta historia</div>
@@ -343,6 +734,46 @@ document.getElementById("confirmAtelier").addEventListener("click",function(){
   this.textContent="Respuesta registrada ✓";
   document.getElementById("atelierSuccess").classList.remove("hidden");
 });
+</script>
+
+
+<script>
+/* VIDEO 1 sound */
+const heroVideo = document.getElementById("videoHero");
+const soundToggle = document.getElementById("soundToggle");
+
+soundToggle.addEventListener("click",function(){
+  heroVideo.muted = !heroVideo.muted;
+  this.textContent = heroVideo.muted ? "Activar sonido" : "Silenciar";
+});
+
+/* Atelier countdown */
+const atelierTarget = new Date("2027-09-12T17:00:00-05:00").getTime();
+
+function updateAtelierCountdown(){
+  const diff = Math.max(0,atelierTarget-Date.now());
+
+  document.getElementById("aDays").textContent =
+    String(Math.floor(diff/86400000)).padStart(2,"0");
+
+  document.getElementById("aHours").textContent =
+    String(Math.floor(diff/3600000)%24).padStart(2,"0");
+
+  document.getElementById("aMinutes").textContent =
+    String(Math.floor(diff/60000)%60).padStart(2,"0");
+
+  document.getElementById("aSeconds").textContent =
+    String(Math.floor(diff/1000)%60).padStart(2,"0");
+}
+updateAtelierCountdown();
+setInterval(updateAtelierCountdown,1000);
+
+/* Cursor glow desktop */
+const glow = document.getElementById("pointerGlow");
+window.addEventListener("pointermove",function(e){
+  glow.style.left=e.clientX+"px";
+  glow.style.top=e.clientY+"px";
+},{passive:true});
 </script>
 
 </body>
