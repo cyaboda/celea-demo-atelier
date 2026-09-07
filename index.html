@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Atelier Demo · CELEA</title>
+<style>
+:root{
+  --ink:#111318;
+  --ivory:#F4F0E8;
+  --champagne:#C7A56A;
+  --smoke:#B8B9C0;
+  --plum:#403246;
+  --glass:rgba(244,240,232,.08);
+  --line:rgba(244,240,232,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--ivory);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+.serif{font-family:Georgia,"Times New Roman",serif}
+.hidden{display:none!important}
+section{position:relative;overflow:hidden}
+.kicker{font-size:10px;letter-spacing:.34em;text-transform:uppercase;font-weight:700;color:var(--champagne)}
+.atelier-badge{position:fixed;left:16px;bottom:16px;z-index:120;padding:9px 13px;border-radius:999px;background:rgba(17,19,24,.72);border:1px solid rgba(244,240,232,.14);backdrop-filter:blur(12px);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#F2EEE6}
+
+#gate{position:fixed;inset:0;z-index:1000;background:#0B0D12;display:grid;place-items:center;overflow:hidden}
+.curtain{position:absolute;top:0;bottom:0;width:51%;background:linear-gradient(90deg,rgba(255,255,255,.03),transparent 18%,rgba(0,0,0,.18) 54%,transparent),linear-gradient(180deg,#171A22,#0E1016);transition:transform 1.35s cubic-bezier(.7,0,.2,1)}
+.curtain.left{left:0;border-right:1px solid rgba(255,255,255,.06)}
+.curtain.right{right:0;border-left:1px solid rgba(255,255,255,.06)}
+#gate.open .curtain.left{transform:translateX(-103%)}
+#gate.open .curtain.right{transform:translateX(103%)}
+.gate-center{position:relative;z-index:4;display:flex;flex-direction:column;align-items:center;text-align:center;transition:opacity .55s ease,transform .55s ease}
+#gate.open .gate-center{opacity:0;transform:scale(.94)}
+.monogram{width:92px;height:92px;border-radius:50%;border:1px solid rgba(199,165,106,.65);display:grid;place-items:center;font:400 27px Georgia,serif;color:var(--champagne);margin-bottom:28px}
+.gate-title{font:400 clamp(42px,7vw,74px)/.95 Georgia,serif;margin:0 0 12px}
+.gate-sub{color:#B9BBC4;font-size:11px;letter-spacing:.25em;text-transform:uppercase;margin-bottom:34px}
+.open-btn{border:1px solid rgba(199,165,106,.72);color:var(--ivory);background:transparent;padding:15px 28px;border-radius:999px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:.35s ease}
+.open-btn:hover{background:var(--champagne);color:#111318;transform:translateY(-2px)}
+
+.hero{min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;background:radial-gradient(circle at 85% 18%,rgba(64,50,70,.6),transparent 28%),radial-gradient(circle at 18% 80%,rgba(199,165,106,.08),transparent 32%),linear-gradient(145deg,#101218,#171621 55%,#0F1116)}
+.hero-copy{padding:9vw;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:3}
+.hero h1{font:400 clamp(64px,9vw,136px)/.82 Georgia,serif;letter-spacing:-.05em;margin:22px 0 30px}
+.hero h1 span{display:block;color:var(--champagne);font-size:.68em;margin:.12em 0}
+.hero-meta{display:flex;gap:34px;flex-wrap:wrap;margin-top:32px}
+.meta-block{min-width:150px;border-top:1px solid rgba(244,240,232,.22);padding-top:13px}
+.meta-block b{display:block;font:400 24px Georgia,serif}
+.meta-block span{display:block;margin-top:7px;color:#A8ABB6;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
+.hero-art{position:relative;min-height:100svh}
+.orb{position:absolute;border-radius:50%;border:1px solid rgba(244,240,232,.18)}
+.orb.big{width:72vh;height:72vh;right:-14vh;top:13vh;background:radial-gradient(circle at 38% 32%,rgba(255,255,255,.08),transparent 18%),radial-gradient(circle at 58% 62%,rgba(199,165,106,.14),transparent 35%),rgba(255,255,255,.02);backdrop-filter:blur(4px)}
+.orb.small{width:34vh;height:34vh;left:3vw;bottom:8vh;border-color:rgba(199,165,106,.36)}
+.hero-number{position:absolute;right:4vw;bottom:4vh;font:400 clamp(110px,16vw,260px)/.8 Georgia,serif;color:rgba(244,240,232,.025)}
+.hero-guest{margin-top:44px;font:italic 21px/1.55 Georgia,serif;color:#E6E0D6}
+.hero-guest small{display:block;margin-top:12px;font-family:Arial,sans-serif;font-style:normal;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#A9ABB3}
+
+.story{min-height:100svh;display:grid;grid-template-columns:.9fr 1.1fr;background:var(--ivory);color:var(--ink)}
+.story-left{padding:8vw;display:flex;flex-direction:column;justify-content:center}
+.story-left h2{font:400 clamp(52px,6vw,92px)/.92 Georgia,serif;margin:16px 0 28px}
+.story-left p{max-width:560px;line-height:1.85;color:#5C5A5F}
+.story-right{position:relative;min-height:100svh;display:grid;place-items:center}
+.frame-stack{width:min(78%,620px);aspect-ratio:4/5;position:relative}
+.frame{position:absolute;inset:0;border:1px solid rgba(17,19,24,.14)}
+.frame.one{transform:rotate(-6deg);background:linear-gradient(155deg,#C2C3C9,#E3E0D9)}
+.frame.two{transform:rotate(5deg) translate(18px,10px);background:linear-gradient(155deg,#372C3D,#14161B)}
+.frame.three{transform:translate(-12px,-14px);display:grid;place-items:center;background:radial-gradient(circle at 62% 34%,rgba(199,165,106,.18),transparent 28%),linear-gradient(145deg,#171821,#24202A);color:white}
+.frame-mark{font:400 clamp(72px,10vw,130px)/1 Georgia,serif;color:var(--champagne)}
+.frame-caption{position:absolute;bottom:26px;left:26px;right:26px;display:flex;justify-content:space-between;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#B6B7BD}
+
+.timeline{min-height:100svh;background:linear-gradient(180deg,#0E1015,#17161F);padding:110px max(24px,7vw)}
+.timeline-head{max-width:760px;margin-bottom:64px}
+.timeline h2{font:400 clamp(48px,6vw,86px)/.92 Georgia,serif;margin:15px 0}
+.timeline-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.timeline-card{min-height:420px;border:1px solid var(--line);background:rgba(255,255,255,.025);padding:34px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.timeline-card .index{font:400 72px/1 Georgia,serif;color:rgba(244,240,232,.06);position:absolute;right:18px;top:10px}
+.timeline-card h3{font:400 38px Georgia,serif;margin:18px 0 14px}
+.timeline-card p{color:#B8BBC4;line-height:1.7}
+.timeline-card .time{margin-top:auto;color:var(--champagne);font:400 26px Georgia,serif}
+
+.experience{min-height:100svh;background:radial-gradient(circle at 18% 18%,rgba(199,165,106,.12),transparent 28%),var(--plum);padding:110px max(24px,7vw)}
+.experience-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:6vw;align-items:center;max-width:1280px;margin:auto}
+.experience-copy h2{font:400 clamp(50px,6vw,90px)/.92 Georgia,serif;margin:15px 0 24px}
+.experience-copy p{color:#D2CCD5;line-height:1.8}
+.interactive-panel{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tile{min-height:240px;border:1px solid rgba(244,240,232,.18);background:rgba(255,255,255,.045);padding:28px;transition:.35s ease}
+.tile:hover{transform:translateY(-6px);background:rgba(255,255,255,.08)}
+.tile h3{font:400 30px Georgia,serif;margin:12px 0 8px}
+.tile p{color:#C3BCC7;line-height:1.6}
+.tile .icon{width:46px;height:46px;border-radius:50%;border:1px solid rgba(199,165,106,.5);display:grid;place-items:center;color:var(--champagne)}
+
+.rsvp{min-height:100svh;background:var(--ivory);color:var(--ink);padding:110px max(24px,7vw)}
+.rsvp-wrap{max-width:1180px;margin:auto;display:grid;grid-template-columns:.8fr 1.2fr;gap:6vw;align-items:start}
+.rsvp-copy h2{font:400 clamp(52px,6vw,88px)/.92 Georgia,serif;margin:15px 0 22px}
+.rsvp-copy p{color:#66636A;line-height:1.8}
+.rsvp-card{background:#FCFAF5;border:1px solid rgba(17,19,24,.12);padding:38px;box-shadow:0 22px 70px rgba(17,19,24,.08)}
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.field label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#6C6870}
+.field input,.field select,.field textarea{width:100%;border:1px solid #D8D3C8;background:white;padding:13px 14px;color:var(--ink)}
+.field textarea{min-height:100px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.confirm{border:0;background:var(--ink);color:white;padding:14px 22px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:.3s ease}
+.confirm:hover{background:var(--champagne);color:var(--ink)}
+.success{margin-top:18px;padding:16px;background:#EEE8DD;color:#343238}
+
+.final{min-height:100svh;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 50% 45%,rgba(199,165,106,.13),transparent 24%),linear-gradient(145deg,#0D0F14,#171821)}
+.final h2{font:400 clamp(66px,10vw,150px)/.8 Georgia,serif;margin:20px 0 28px}
+.final h2 span{color:var(--champagne)}
+.final p{font:italic 24px/1.5 Georgia,serif;color:#D4D0C9}
+.final .credit{margin-top:54px;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#8E9098}
+
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+.reveal.show{opacity:1;transform:none}
+.star{position:absolute;width:8px;height:8px;transform:rotate(45deg);background:var(--champagne);opacity:.65}
+.star.s1{left:8%;top:18%}
+.star.s2{right:12%;top:35%;background:#8F8294}
+.star.s3{left:18%;bottom:12%;background:#C3B8A0}
+
+@media(max-width:900px){
+  .hero,.story,.experience-grid,.rsvp-wrap{grid-template-columns:1fr}
+  .hero-art{min-height:54svh}
+  .story-right{min-height:70svh}
+  .timeline-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .interactive-panel{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="atelier-badge">Demo Atelier · CELEA</div>
+
+<div id="gate">
+  <div class="curtain left"></div>
+  <div class="curtain right"></div>
+  <div class="gate-center">
+    <div class="monogram">V · M</div>
+    <div class="kicker">Atelier · experiencia personalizada</div>
+    <div class="gate-title">Valentina & Matteo</div>
+    <div class="gate-sub">12 · 09 · 2027 · Quito</div>
+    <button class="open-btn" id="openAtelier">Entrar a la experiencia</button>
+  </div>
+</div>
+
+<section class="hero">
+  <span class="star s1"></span>
+  <span class="star s2"></span>
+  <span class="star s3"></span>
+
+  <div class="hero-copy">
+    <div class="kicker reveal">Una celebración irrepetible</div>
+    <h1 class="reveal">Valentina<span>&</span>Matteo</h1>
+    <div class="hero-guest reveal">
+      Esta experiencia fue creada especialmente para<br>
+      <strong>Invitado Atelier</strong>.
+      <small>2 lugares reservados</small>
+    </div>
+
+    <div class="hero-meta reveal">
+      <div class="meta-block"><b>12 Sep</b><span>2027</span></div>
+      <div class="meta-block"><b>17:00</b><span>Ceremonia</span></div>
+      <div class="meta-block"><b>Quito</b><span>Ecuador</span></div>
+    </div>
+  </div>
+
+  <div class="hero-art">
+    <div class="orb big"></div>
+    <div class="orb small"></div>
+    <div class="hero-number">01</div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="story-left">
+    <div class="kicker reveal">Capítulo I · Donde todo comenzó</div>
+    <h2 class="reveal">Dos mundos,<br>una misma dirección.</h2>
+    <p class="reveal">
+      Atelier no parte de una plantilla. Cada sección nace de la historia,
+      el espacio, la música y la personalidad de la pareja. Esta demo imagina
+      una boda nocturna, íntima y editorial.
+    </p>
+  </div>
+
+  <div class="story-right">
+    <div class="frame-stack reveal">
+      <div class="frame one"></div>
+      <div class="frame two"></div>
+      <div class="frame three">
+        <div class="frame-mark">V·M</div>
+        <div class="frame-caption">
+          <span>Quito · Ecuador</span>
+          <span>2027</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline">
+  <div class="timeline-head">
+    <div class="kicker reveal">Capítulo II · El gran día</div>
+    <h2 class="reveal">Una experiencia en tres actos.</h2>
+  </div>
+
+  <div class="timeline-grid">
+    <article class="timeline-card reveal">
+      <span class="index">01</span>
+      <div class="kicker">Ceremonia</div>
+      <h3>El sí</h3>
+      <p>Una ceremonia al atardecer con luz natural, música en vivo y una entrada diseñada alrededor del espacio.</p>
+      <div class="time">17:00</div>
+    </article>
+
+    <article class="timeline-card reveal">
+      <span class="index">02</span>
+      <div class="kicker">Cena</div>
+      <h3>La mesa</h3>
+      <p>Cena de autor, mesas largas y una ambientación que cambia lentamente con la luz de la noche.</p>
+      <div class="time">19:30</div>
+    </article>
+
+    <article class="timeline-card reveal">
+      <span class="index">03</span>
+      <div class="kicker">Celebración</div>
+      <h3>La noche</h3>
+      <p>Música, visuales, una segunda atmósfera y un cierre diseñado como el último acto de una película.</p>
+      <div class="time">22:00</div>
+    </article>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="experience-grid">
+    <div class="experience-copy">
+      <div class="kicker reveal">Capítulo III · Hecho para ustedes</div>
+      <h2 class="reveal">No hay dos Atelier iguales.</h2>
+      <p class="reveal">
+        El diseño puede incorporar recursos únicos: cartas, audio,
+        storytelling, animaciones, galerías experimentales, menú,
+        códigos privados, itinerarios y módulos creados específicamente
+        para el evento.
+      </p>
+    </div>
+
+    <div class="interactive-panel">
+      <article class="tile reveal"><div class="icon">♪</div><h3>Banda sonora</h3><p>Una experiencia que puede abrirse con música elegida para la pareja.</p></article>
+      <article class="tile reveal"><div class="icon">✦</div><h3>Dirección creativa</h3><p>Tipografía, ritmo, movimiento y lenguaje visual únicos.</p></article>
+      <article class="tile reveal"><div class="icon">↗</div><h3>Itinerario vivo</h3><p>Secciones que cambian según el momento o tipo de invitado.</p></article>
+      <article class="tile reveal"><div class="icon">∞</div><h3>Funciones a medida</h3><p>Todo lo que el evento necesite, diseñado alrededor de su historia.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="rsvp">
+  <div class="rsvp-wrap">
+    <div class="rsvp-copy">
+      <div class="kicker reveal">Capítulo IV · Tu lugar en esta historia</div>
+      <h2 class="reveal">Confirma tu asistencia.</h2>
+      <p class="reveal">
+        En Atelier, el RSVP puede adaptarse al evento: menú, transporte,
+        hospedaje, alergias, acompañantes, horarios o cualquier dato que
+        los anfitriones necesiten.
+      </p>
+    </div>
+
+    <div class="rsvp-card reveal">
+      <div class="row">
+        <div class="field"><label>Invitado principal</label><input value="Invitado Atelier" readonly></div>
+        <div class="field"><label>Cupos</label><input value="2" readonly></div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>¿Asistirás?</label>
+          <select><option>Sí, asistiré</option><option>No podré asistir</option></select>
+        </div>
+        <div class="field"><label>Segundo invitado</label><input placeholder="Nombre del acompañante"></div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Preferencia de menú</label>
+          <select><option>Menú clásico</option><option>Vegetariano</option><option>Vegano</option></select>
+        </div>
+        <div class="field">
+          <label>Transporte</label>
+          <select><option>No necesito</option><option>Sí, reservar transporte</option></select>
+        </div>
+      </div>
+
+      <div class="field"><label>Mensaje para los novios</label><textarea placeholder="Escribe algo especial…"></textarea></div>
+
+      <button class="confirm" id="confirmAtelier">Confirmar asistencia</button>
+      <div class="success hidden" id="atelierSuccess">
+        Demo registrada. En un proyecto Atelier real, CELEA guardaría todos estos datos en la base privada del evento.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="reveal">
+    <div class="kicker">Fin del primer capítulo</div>
+    <h2>Valentina <span>&</span><br>Matteo</h2>
+    <p>Lo extraordinario empieza cuando deja de parecerse a todo lo demás.</p>
+    <div class="credit">Una experiencia Atelier por CELEA Studio</div>
+  </div>
+</section>
+
+<script>
+document.body.style.overflow = "hidden";
+
+document.getElementById("openAtelier").addEventListener("click",function(){
+  const gate = document.getElementById("gate");
+  gate.classList.add("open");
+  setTimeout(function(){
+    gate.style.pointerEvents="none";
+    document.body.style.overflow="auto";
+  },900);
+});
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.classList.add("show"); }
+  });
+},{threshold:.14});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+window.addEventListener("scroll",function(){
+  const y = window.scrollY;
+  document.querySelectorAll(".orb").forEach((orb,i)=>{
+    const factor = i===0 ? .055 : -.035;
+    orb.style.transform = `translateY(${y*factor}px) rotate(${y*.01*(i? -1:1)}deg)`;
+  });
+},{passive:true});
+
+document.getElementById("confirmAtelier").addEventListener("click",function(){
+  this.disabled=true;
+  this.textContent="Respuesta registrada ✓";
+  document.getElementById("atelierSuccess").classList.remove("hidden");
+});
+</script>
+
+</body>
+</html>
